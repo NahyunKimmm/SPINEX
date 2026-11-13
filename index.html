@@ -149,14 +149,13 @@ body.form .panel{opacity:1;visibility:visible}
 body.exiting #gestureGuide,body.exiting #info{opacity:.28}
 
 /* 모드 전환 토스트 — 시선이 머무는 화면 위쪽 중앙 */
-#toast{position:fixed;left:50%;top:calc(var(--u)*2);z-index:12;display:flex;align-items:center;
-  gap:calc(var(--u)*.9);padding:calc(var(--u)*.7) calc(var(--u)*2) calc(var(--u)*.7) calc(var(--u)*1.1);
-  border-radius:999px;background:rgba(10,10,10,.9);color:#fff;
-  font:700 calc(var(--u)*.9)/1 var(--title);letter-spacing:0;white-space:nowrap;
+/* 모양 · 크기 · 여백 · 글꼴은 .pill 과 동일, 위치와 등장만 따로 */
+#toast{position:fixed;left:50%;top:calc(var(--u)*2);z-index:12;white-space:nowrap;
+  background:rgba(10,10,10,.9);
   transform:translate(-50%,-140%);opacity:0;transition:transform .45s var(--ease),opacity .35s}
 #toast.show{transform:translate(-50%,0);opacity:1}
-#toast img{width:calc(var(--u)*1.7);height:calc(var(--u)*1.7)}
-#toast i{font:italic 400 .82em var(--serif);opacity:.6;margin-left:.35em}
+#toast .ic{animation:none}
+#toast.noicon .ic{display:none}
 body:not(.form) #toast{opacity:0}
 
 /* 손이 사라졌을 때 — 숫자 카운트다운 */
@@ -261,7 +260,7 @@ body.form #warn{color:rgba(10,10,10,.55)}
 <aside id="gestureGuide" class="panel">
   <div id="gestures"></div>
 </aside>
-<div id="toast"><img alt=""><span></span></div>
+<div id="toast" class="pill"><span class="ic"><img alt=""></span><span class="tx"></span></div>
 <div id="exitOv"><div class="card">
   <div class="ringWrap">
     <svg viewBox="0 0 200 200"><circle class="track" cx="100" cy="100" r="96"/>
@@ -883,8 +882,9 @@ function txt(id,v){ v=String(v); if(_txt[id]!==v){ _txt[id]=v; $(id).textContent
 let toastTimer=0;
 function toast(html, icon, ms){
   const t=$('toast'), im=t.querySelector('img');
-  if(icon){ im.src=ICON[icon]; im.style.display=''; } else im.style.display='none';
-  t.querySelector('span').innerHTML=html;
+  if(icon) im.src=ICON[icon];
+  t.classList.toggle('noicon', !icon);
+  t.querySelector('.tx').innerHTML=html;
   t.classList.add('show');
   clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'), ms||1500);
 }
