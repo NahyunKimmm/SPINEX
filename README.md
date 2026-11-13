@@ -24,4 +24,4 @@ Show your open hand → Hold still → Make a fist (수열 확정) → 손동작
 전시 PC 에 설치하거나 `fonts/EurostileBoldExtended.woff2` (또는 `.otf`) 로 넣어두면 적용된다. 없으면 Pretendard 로 대체.
 
 ## 영상
-`spinex_film.mp4` 는 Git LFS 로 관리한다. 클론 전에 `git lfs install` 필요.
+`spinex_film.mp4` 는 원본(116MB)을 1080p · H.264 로 재인코딩한 버전(약 14MB, 무음). 배경에 흐림 처리되어 깔린다.
