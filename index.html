@@ -70,6 +70,8 @@ body.aod #aodGuide,body.gate #gate,body.draw #draw,body.reg #reg{opacity:1;visib
   animation:breathe 2.6s var(--ease) infinite}
 .pill .ic img{position:absolute;inset:0;width:100%;height:100%;transition:opacity .35s}
 .pill .ic .k{opacity:0}
+/* Figma 'Vertical trim' 과 같게: 글자 박스를 대문자 높이~기준선으로 잘라 아이콘과 광학 중앙을 맞춘다 */
+.pill > span:not(.ic),.headline{text-box:trim-both cap alphabetic}
 .pill .ic svg{position:absolute;inset:-14%;width:128%;height:128%;transform:rotate(-90deg)}
 #gate .pill .ic{animation:none}
 #aodGuide .alt{display:none}
