@@ -152,9 +152,12 @@ body.exiting #gestureGuide,body.exiting #info{opacity:.28}
 /* 모양 · 크기 · 여백 · 글꼴은 .pill 과 동일, 위치와 등장만 따로 */
 #toast{position:fixed;left:50%;top:calc(var(--u)*2);z-index:12;white-space:nowrap;
   background:rgba(10,10,10,.9);
+  gap:calc(var(--u)*0.488);
+  padding:calc(var(--u)*0.586) calc(var(--u)*1.220) calc(var(--u)*0.586) calc(var(--u)*0.976);
+  font-size:calc(var(--u)*.9);
   transform:translate(-50%,-140%);opacity:0;transition:transform .45s var(--ease),opacity .35s}
 #toast.show{transform:translate(-50%,0);opacity:1}
-#toast .ic{animation:none}
+#toast .ic{animation:none;width:calc(var(--u)*1.928);height:calc(var(--u)*1.928)}
 #toast.noicon .ic{display:none}
 body:not(.form) #toast{opacity:0}
 
